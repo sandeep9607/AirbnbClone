@@ -26,6 +26,7 @@ struct ExploreView: View {
             }
             .navigationDestination(for: Int.self) { listing in
                 ListingDetailView()
+                    .toolbarVisibility(.hidden, for: .navigationBar)
             }
         }
     }
