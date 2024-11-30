@@ -9,25 +9,42 @@ import SwiftUI
 
 
 struct ExploreView: View {
+    @State private var showDestinationSearchView = false
+    @StateObject var viewModel = ExploreViewModel(service: ExploreService())
+    
     var body: some View {
         NavigationStack {
-            ScrollView {
-                SearchAndFilterBar()
-                LazyVStack(spacing: 30){
-                    ForEach(0..<10, id: \.self) { listing in
-                        NavigationLink(value: listing) {
-                            ListingItemView()
-                                .frame(height: 410)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
+            if showDestinationSearchView{
+                DestinationSearchView(show: $showDestinationSearchView, viewModel: viewModel)
+//                    .environmentObject(viewModel)
+            }else{
+                ScrollView {
+                    SearchAndFilterBar()
+                        .onTapGesture {
+                            withAnimation(.snappy) {
+                                showDestinationSearchView.toggle()
+                            }
+                        }
+                    LazyVStack(spacing: 30){
+                        ForEach(viewModel.listings) { listing in
+                            NavigationLink(value: listing) {
+                                ListingItemView(listing: listing)
+                                    .frame(height: 410)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                            }
                         }
                     }
+                    .padding()
                 }
-                .padding()
+                .
+                navigationDestination(for: Listing.self) { listing in
+                    ListingDetailView(listing: listing)
+                        .toolbarVisibility(.hidden, for: .navigationBar)
+                }
             }
-            .navigationDestination(for: Int.self) { listing in
-                ListingDetailView()
-                    .toolbarVisibility(.hidden, for: .navigationBar)
-            }
+        }
+        .task {
+            await viewModel.fetchListings()
         }
     }
 }
