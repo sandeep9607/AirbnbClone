@@ -11,7 +11,7 @@ It demonstrates modern SwiftUI development, reusable UI components, and clean pr
 ## 📱 Screenshots
 
 | Explore | Property Details | Amenities |
-|---------|--------| --------| ----------|
+|---------|------------------| ----------| 
 | <img src="Screenshots/home.png" width="280"> | <img src="Screenshots/airbnb-detail.png" width="280"> | <img src="Screenshots/airbnb-detail2.png" width="280"> |
 
 | Search | Profile |
