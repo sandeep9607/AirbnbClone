@@ -12,11 +12,11 @@ It demonstrates modern SwiftUI development, reusable UI components, and clean pr
 
 | Explore | Search |
 |---------|--------|
-| <img src="Screenshots/home.png" width="280"> | <img src="Screenshots/search.png" width="280"> |
+| <img src="Screenshots/home.png" width="280"> | <img src="Screenshots/form.png" width="280"> |
 
 | Property Details | Amenities |
 |-----------------|-----------|
-| <img src="Screenshots/detail.png" width="280"> | <img src="Screenshots/detail-2.png" width="280"> |
+| <img src="Screenshots/airbnb-detail.png" width="280"> | <img src="Screenshots/airbnb-detail-2.png" width="280"> |
 
 | Profile |
 |---------|
